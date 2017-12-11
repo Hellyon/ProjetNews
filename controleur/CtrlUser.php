@@ -90,5 +90,8 @@ class CtrlUser {
     function consulterNews(array $dVueEreur){
 
     }
+    function erreur404(array $dVueErreur){
+
+    }
 }//fin class
 ?>
