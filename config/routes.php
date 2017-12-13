@@ -18,6 +18,6 @@
        ],
         'connectionAdmin' => [
             'ctrl' => '\controleur\CtrlUser',
-            'action' => 'mainPage'
+            'action' => 'connectionAdmin'
         ]
     ];

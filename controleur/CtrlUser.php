@@ -1,5 +1,5 @@
 <?php
-	namespace controleur;
+namespace controleur;
 use config\Validation;
 
 class CtrlUser {
@@ -17,7 +17,7 @@ class CtrlUser {
 
         try{
             $action=$_REQUEST['action'];
-
+            print($action);
             switch($action) {
 
                 //pas d'action, on r�initialise 1er appel
@@ -27,6 +27,10 @@ class CtrlUser {
 
                 case "connectionAdmin":
                     $this->connectionAdmin($dVueEreur);
+                    break;
+
+                case "validationFormulaire":
+                    $this->validationFormulaire();
                     break;
                 //mauvaise action
                 default:
@@ -62,19 +66,22 @@ class CtrlUser {
         $results = $newsGateway->findByCountry('FR', $start, $limit);
         require ($rep.$vues['mainPage']);
     }
+    function connectionAdmin(array $dVueEreur){
+        global $rep,$vues;
 
-    function connecionAdmin(array $dVueEreur) {
         $dVue = array (
             'admin' => "",
             'mdp' => "",
         );
-            global $rep,$vues;
+        require ($rep.$vues['connectionAdmin']);
+    }
 
-
+    function validationFormulaire(array $dVueEreur) {
+        global $rep,$vues;
         //si exception, ca remonte !!!
         $admin=$_POST['txtAdmin']; // txtAdmin = nom du champ texte dans le formulaire
         $mdp=$_POST['txtmdp'];
-           Validation::val_form($admin,$mdp,$dVueEreur);
+        Validation::val_form($admin,$mdp,$dVueEreur);
 
             $model = new Admin($admin, $mdp);
             $data=$model->get_data();
@@ -84,14 +91,27 @@ class CtrlUser {
             'mdp' => $mdp,
             'data' => $data,
             );
-            require ($rep.$vues['connectionAdmin']);
-            echo $data;
+        require ($rep.$vues['connectionAdmin']);
+        echo $data;
     }
     function consulterNews(array $dVueEreur){
 
     }
     function erreur404(array $dVueErreur){
 
+    }
+
+    static function connection($login, $mdp){
+        $login = Sanitize::stringsanitize($login);
+        $mdp = Sanitize::stringsanitize($mdp);
+
+        $user = new AdminGateway->getAdmin($login, hash("sba512", $mdp));
+        if ($user == NULL) {
+            return NULL;
+        }
+        session_start();
+        $session['username'] = $user->getUserName();
+        $session['password'] = $user->getPassword();
     }
 }//fin class
 ?>

@@ -25,10 +25,6 @@ class CtrlAdmin  {
                     $this->Reinit();
                     break;
 
-                case "connectionAdmin":
-                    $this->connectionAdmin($dVueEreur);
-                    break;
-
                 case "gererNews":
                     $this->gererNews($dVueEreur);
                     break;
@@ -68,10 +64,13 @@ class CtrlAdmin  {
     function deconnection(array $dVueEreur) {
 
     }
-    function consulterNews(array $dVueEreur){
+    function gererNews(array $dVueEreur){
 
     }
-    function gererNews(array $dVueEreur){
+    function supprimerNews(array $dVueEreur){
+
+    }
+    function ajouterNews(array $dVueEreur){
 
     }
 }//fin class
