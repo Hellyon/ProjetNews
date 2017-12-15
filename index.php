@@ -1,4 +1,5 @@
 <?php
+require("vues/header.html");
 //chargement config
 require_once(__DIR__.'/config/config.php');
 require_once(__DIR__.'/config/routes.php');
@@ -12,5 +13,5 @@ $myLibLoader->register();
 $myLibLoader = new SplClassLoader('modeles', './');
 $myLibLoader->register();
 
-$ctrl = new \controleur\FrontCtrl();
+$ctrl = new \controleur\CtrlUser();
 ?>

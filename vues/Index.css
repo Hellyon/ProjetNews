@@ -1,0 +1,21 @@
+#links{
+    text-align: center;
+    height: auto;
+    color: #160112;
+    background-color: #505A2C;
+}
+.dl{
+    max-height: 120px;
+    max-width:200px;
+}
+.categorie{
+    /*width: 80%;*/
+	 background-color: #260820;
+    color: #5E562E;
+    padding-left: 80px;
+}
+
+.centrerTxt{
+    text-align: center;
+    align-items: center;
+}

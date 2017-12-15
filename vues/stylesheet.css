@@ -1,0 +1,45 @@
+html {
+	background-image: url("ressources/Background2.jpg");
+	background-repeat:no-repeat;
+	background-color: #43213D;
+   background-position: top center;
+}
+
+body{
+	margin: 0;
+	flex-direction: column;
+	min-height: 100vh;
+}
+header {
+    width: 100%;
+}
+
+h1{
+	text-shadow: -5px 5px 5px;
+	text-align: center;
+	height: 310px;
+    font-family: Georgia;
+    color: ivory;
+    outline: none;
+}
+a:hover{
+	color: red;
+}
+
+a:visited{
+	color: ivory;
+}
+
+a{
+    text-decoration: none;
+    color: ivory;
+}
+
+nav{
+    display: flex;
+	text-align: center;
+	height: auto;
+}
+.Rubrique{
+
+/* http://paletton.com/#uid=4500N0kkK9t0000ggbPp86EuE3N Pour la palette de couleur */

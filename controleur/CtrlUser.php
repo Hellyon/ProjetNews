@@ -7,7 +7,7 @@ class CtrlUser {
     /**
      * Controleur constructor.
      */
-    function __construct() {
+    function __construct($route) {
         global $rep,$vues; // nécessaire pour utiliser variables globales
         // on démarre ou reprend la session si necessaire (préférez utiliser un modèle pour gérer vos session ou cookies)
         session_start();
@@ -17,7 +17,6 @@ class CtrlUser {
 
         try{
             $action=$_REQUEST['action'];
-            print($action);
             switch($action) {
 
                 //pas d'action, on r�initialise 1er appel
@@ -100,18 +99,16 @@ class CtrlUser {
     function erreur404(array $dVueErreur){
 
     }
-
-    static function connection($login, $mdp){
+    function connection($login, $mdp){
         $login = Sanitize::stringsanitize($login);
         $mdp = Sanitize::stringsanitize($mdp);
 
-        $user = new AdminGateway->getAdmin($login, hash("sba512", $mdp));
-        if ($user == NULL) {
+        $admin = new Admin($login, hash("sba512", $mdp));
+        if ($admin == NULL) {
             return NULL;
         }
         session_start();
-        $session['username'] = $user->getUserName();
-        $session['password'] = $user->getPassword();
+        $session['username'] = $admin->getUserName();
     }
 }//fin class
 ?>

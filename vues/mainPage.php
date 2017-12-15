@@ -1,5 +1,4 @@
 <html>
-    <div><h1 align="center" >Actualité du Friday</h1></div>
     <table align="center">
         <tr>
             <th>Date</th>
@@ -27,5 +26,5 @@
         }
         ?>
     </table>
-<div><a href="index.php?route=connectionAdmin">Connection Administrateur</a></div>
+<div><a href="index.php?action=connectionAdmin">Connection Administrateur</a></div>
 </html>
