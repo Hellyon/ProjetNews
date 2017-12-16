@@ -6,10 +6,14 @@
  * Time: 19:39
  */
 
-namespace modeles;
+namespace DAL;
 
 
 class AdminGateway
 {
+    private $con;
 
+    public function __construct(Connection $con){
+        $this->con = $con;
+    }
 }

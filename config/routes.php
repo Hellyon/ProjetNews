@@ -11,13 +11,9 @@
        'mainPage' => [
            'ctrl' => '\controleur\CtrlUser',
            'action' => 'mainPage',
-            'params' => [
-                'start' => PARAM_INT,
-                'limit' => PARAM_INT
-            ]
        ],
         'connectionAdmin' => [
             'ctrl' => '\controleur\CtrlUser',
-            'action' => 'connectionAdmin'
+            'action' => 'connectionAdmin',
         ]
     ];

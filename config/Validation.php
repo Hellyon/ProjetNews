@@ -2,6 +2,8 @@
 
 namespace config;
 
+use controleur\CtrlUser;
+
 class Validation {
 
     static function val_action($action) {
@@ -11,7 +13,7 @@ class Validation {
             }
     }
 
-    static function val_form(string &$admin, string &$mdp, &$dVueEreur) {
+    static function val_form(string &$admin, string &$mdp) {
 
         if (!isset($admin)||$admin=="") {
             $dVueEreur[] =	"pas de nom administrateur";
@@ -29,7 +31,6 @@ class Validation {
             $dVueEreur[] =	"pas de mdp";
             $mdp="";
         }
-
     }
 
 }

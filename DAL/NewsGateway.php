@@ -1,5 +1,5 @@
 <?php
-namespace modeles;
+namespace DAL;
 use config\Connection;
 use PDO;
 /**
@@ -33,7 +33,7 @@ use PDO;
         private function getInstance(array $results){
             $retour =[];
             foreach($results as $news){
-                $retour[]=new News($news['url'], $news['titre'], $news['date'], $news['pays'], $news['miniature'], $news["site"]);
+                $retour[]=new \modeles\News($news['url'], $news['titre'], $news['date'], $news['pays'], $news['miniature'], $news["site"]);
             }
             return $retour;
         }
