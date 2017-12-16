@@ -26,5 +26,5 @@
         }
         ?>
     </table>
-<div><a href="index.php?action=connectionAdmin">Connection Administrateur</a></div>
+<div><a href="index.php?route=connectionAdmin">Connection Administrateur</a></div>
 </html>

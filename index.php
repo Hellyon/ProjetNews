@@ -12,6 +12,8 @@ $myLibLoader = new SplClassLoader('config', './');
 $myLibLoader->register();
 $myLibLoader = new SplClassLoader('modeles', './');
 $myLibLoader->register();
+$myLibLoader = new SplClassLoader('DAL', './');
+$myLibLoader->register();
 
-$ctrl = new \controleur\CtrlUser();
+$ctrl = new \controleur\FrontCtrl($routes);
 ?>

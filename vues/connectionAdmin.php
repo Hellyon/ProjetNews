@@ -1,46 +1,5 @@
 <html>
 <head><title>Connection</title>
-
-    <script type="text/javascript">
-        function clearForm(oForm) {
-
-            var elements = oForm.elements;
-
-            oForm.reset();
-
-            for(i=0; i<elements.length; i++) {
-
-                field_type = elements[i].type.toLowerCase();
-
-                switch(field_type) {
-
-                    case "text":
-                    case "password":
-                    case "textarea":
-                    case "hidden":
-
-                        elements[i].value = "";
-                        break;
-
-                    case "radio":
-                    case "checkbox":
-                        if (elements[i].checked) {
-                            elements[i].checked = false;
-                        }
-                        break;
-
-                    case "select-one":
-                    case "select-multi":
-                        elements[i].selectedIndex = -1;
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-        }
-
-    </script>
 </head>
 
 <body>
@@ -67,7 +26,7 @@ if (isset($dVue))
         <?= $dVue['data']  ?>
 
 
-        <form method="post" name="myform" id"myform">
+        <form method="post" name="formCo" action="index.php">
         <table> <tr>
                 <td>Admin</td>
                 <td><input name="txtAdmin" value="<?= $dVue['admin']  ?>" type="text" size="20"></td>
@@ -80,7 +39,6 @@ if (isset($dVue))
         <table> <tr>
                 <td><input type="submit" value="Envoyer"></td>
                 <td><input type="reset" value="Rétablir"></td>
-                <td><input type="button" value="Effacer" onclick="clearForm(this.form);">
                 </td> </tr> </table>
 
         <!-- action !!!!!!!!!! -->
@@ -92,5 +50,4 @@ else {
     print ("erreur !!<br>");
     print ("utilisation anormale de la vuephp");
 } ?>
-<p>Essayez de mettre du code html dans nom -> Correspond à une attaque de type injection</p>
 </body> </html>

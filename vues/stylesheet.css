@@ -40,6 +40,34 @@ nav{
 	text-align: center;
 	height: auto;
 }
+.navigation-lien{
+    display: inline-block;
+    height: auto;
+    width: auto;
+    margin-right: 15px;
+}
+.menu{
+    margin: 0px;
+    display: inline-flex;
+}
+nav{
+    display: flex;
+    text-align: center;
+    height: auto;
+}
 .Rubrique{
+    display: flex;
+    align-items:stretch;
+    justify-content: center;
+    background-color: #36132F;
+    font-size: 40px;
+    width: 100%;
+}
 
+.navigation-lien{
+    display: inline-block;
+    height: auto;
+    width: auto;
+    margin-right: 15px;
+}
 /* http://paletton.com/#uid=4500N0kkK9t0000ggbPp86EuE3N Pour la palette de couleur */
