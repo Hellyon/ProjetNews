@@ -12,7 +12,12 @@
 </header>
 <nav class="Rubrique">
     <ul class="menu">
-        <li class="navigation-lien media">-</li>
+        <li class="navigation-lien media">
+            <?php
+                if(isset($_SESSION['pseudo_admin'])) print("Bienvenue " . $_SESSION['pseudo_admin'] . " !");
+                else echo("-");
+            ?>
+        </li>
     </ul>
 </nav>
 </body>

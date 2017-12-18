@@ -1,6 +1,6 @@
 <?php
     namespace config;
-	class Connection extends \PDO {
+	class Connexion extends \PDO {
 
 		private $stmt;
 

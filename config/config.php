@@ -9,14 +9,13 @@ $dConfig['includes']= array('controleur/Validation.php');
 
 //BD
 
-$user= 'ilbenjello';
-$pass='ilbenjello';
-$dsn='mysql:host=hina;dbname=dbilbenjello';
-
+$user= 'root';
+$pass='';
+$dsn='mysql:host=localhost;dbname=dbilbenjello';
 //Vues
 
 $vues['erreur']='vues/erreur.php';
-$vues['connectionAdmin']='vues/connectionAdmin.php';
+$vues['connexionAdmin']='vues/connexionAdmin.php';
 $vues['mainPage']='vues/mainPage.php';
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 namespace DAL;
-use config\Connection;
+use config\Connexion;
 use PDO;
 /**
  * Created by PhpStorm.
@@ -12,7 +12,7 @@ use PDO;
 
         private $con;
 
-        public function __construct(Connection $con){
+        public function __construct(Connexion $con){
             $this->con = $con;
         }
         public function insert($url, $titre, $date, $pays, $miniature, $site){

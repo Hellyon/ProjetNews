@@ -10,22 +10,34 @@ namespace controleur;
 
 class FrontCtrl {
 
-    function __construct($routes)
+    function __construct($routes, $con)
     {
-        $dVueEreur = array ();
+        $dVueErreur = array ();
         if(isset($_GET['route'])){
             if(isset($routes[$_GET['route']])){
-                $ctrl=new $routes[$_GET['route']]['ctrl']();
-                if(!isset ($routes[$_GET['route']]['action'])){
-                    $ctrl->Reinit();
+                if((isset($routes[$_GET['route']]['admin']) && isset($_SESSION['pseudo_admin']) || !isset($routes[$_GET['route']]['admin']))){
+                    $ctrl=new $routes[$_GET['route']]['ctrl']();
+                    if(isset ($routes[$_GET['route']]['param'])){
+                        $ctrl->{$routes[$_GET['route']]['action']}($con);
+                    }
+                    else{
+                        $ctrl->{$routes[$_GET['route']]['action']}();
+                    }
                 }
-                $ctrl->{$routes[$_GET['route']]['action']}();
+                else{
+                    $ctrl = new CtrlUser();
+                    $ctrl->erreur401($dVueErreur);
+                }
+            }
+            else{
+                $ctrl = new CtrlUser();
+                $ctrl->erreur404($dVueErreur);
             }
         }
         else {
             $action=NULL;
             $ctrl = new CtrlUser();
-            $ctrl->Reinit();
+            $ctrl->Reinit($con);
         }
     }
 }

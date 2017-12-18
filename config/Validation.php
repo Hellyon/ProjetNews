@@ -2,8 +2,6 @@
 
 namespace config;
 
-use controleur\CtrlUser;
-
 class Validation {
 
     static function val_action($action) {
@@ -16,19 +14,19 @@ class Validation {
     static function val_form(string &$admin, string &$mdp) {
 
         if (!isset($admin)||$admin=="") {
-            $dVueEreur[] =	"pas de nom administrateur";
+            $dVueErreur[] =	"pas de nom administrateur";
             $admin="";
         }
 
         if ($admin != filter_var($admin, FILTER_SANITIZE_STRING))
         {
-            $dVueEreur[] =	"testative d'injection de code (attaque sécurité)";
+            $dVueErreur[] =	"tentative d'injection de code (attaque sécurité)";
             $admin="";
 
         }
 
-        if (!isset($mdp)||$mdp==""||!filter_var($mdp, FILTER_VALIDATE_STR)) {
-            $dVueEreur[] =	"pas de mdp";
+        if (!isset($mdp)||$mdp==""||!filter_var($mdp, FILTER_SANITIZE_STRING)) {
+            $dVueErreur[] =	"pas de mdp";
             $mdp="";
         }
     }

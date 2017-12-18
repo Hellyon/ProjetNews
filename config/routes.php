@@ -11,9 +11,20 @@
        'mainPage' => [
            'ctrl' => '\controleur\CtrlUser',
            'action' => 'mainPage',
+           'param' => '$con',
        ],
-        'connectionAdmin' => [
+        'connexionAdmin' => [
             'ctrl' => '\controleur\CtrlUser',
-            'action' => 'connectionAdmin',
+            'action' => 'connexionAdmin',
+        ],
+        'validationConnexion' =>[
+            'ctrl' => '\controleur\CtrlUser',
+            'action' => 'validationConnexion',
+            'param' => '$con',
+        ],
+        'deconnexion' => [
+            'ctrl' => '\controleur\CtrlAdmin',
+            'action' => 'deconnexion',
+            'admin' => 'true'
         ]
     ];

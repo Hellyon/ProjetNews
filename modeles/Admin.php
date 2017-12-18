@@ -18,9 +18,11 @@ class Admin
         $this->mdp = $mdp;
     }
 
-    function get_data()
+    function getUserName()
     {
-        return "Mon modèle ne fait rien";
+        return $this->admin;
     }
-
+    public function getMdp(){
+        return $this->mdp;
+    }
 }

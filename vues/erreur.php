@@ -5,12 +5,14 @@
 
 <body>
 
-<h1>ERREUR !!!!!</h1>
-<?php
-if (isset($dVueEreur)) {
-    foreach ($dVueEreur as $value){
-        echo $value;
+<h2>ERREUR !!!!!</h2>
+<div>
+    <?php
+    if (isset($dVueErreur)) {
+        foreach ($dVueErreur as $value){
+            echo $value;
+        }
     }
-}
-?>
+    ?>
+</div>
 </body> </html>
