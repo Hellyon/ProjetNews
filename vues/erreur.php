@@ -10,7 +10,7 @@
     <?php
     if (isset($dVueErreur)) {
         foreach ($dVueErreur as $value){
-            echo $value;
+            echo ("<div align='center'>$value</div>");
         }
     }
     ?>

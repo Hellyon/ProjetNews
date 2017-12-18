@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Lea News du Friday</title>
-    <link type="text/css" href="vues/stylesheet.css" rel="stylesheet" media="all" />
-    <link type="text/css" href="vues/Index.css" rel="stylesheet" media="all" />
+    <title>Les News du Friday</title>
+    <link type="text/css" href="assets/stylesheet.css" rel="stylesheet" media="all" />
+    <link type="text/css" href="assets/Index.css" rel="stylesheet" media="all" />
     <style type="text/css"></style>
 </head>
 <body>
