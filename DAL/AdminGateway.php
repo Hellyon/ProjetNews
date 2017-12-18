@@ -29,17 +29,14 @@ class AdminGateway
             $_SESSION['droits'] = 2;
             return "<div align =center><p>Bienvenue " . $_SESSION['pseudo_admin']. ',
                 vous êtes maintenant connecté!</p>
-                <p>Cliquez <a href="index.php">ici</a> 
-                pour revenir à la page d accueil</p></div>';
+                <p><a href="index.php">Cliquez ici pour revenir à la page d accueil.</a></p></div>';
         }
         else // Accès pas OK !
         {
             return '<div align="center"><p>Une erreur s\'est produite 
             pendant votre identification.<br /> Le mot de passe ou le pseudo 
-                entré n\'est pas correcte.</p><p>Cliquez <a href="index.php?route=connexionAdmin">ici</a> 
-            pour revenir à la page précédente
-            <br /><br />Cliquez <a href="index.php">ici</a> 
-            pour revenir à la page d accueil</p></divalign>';
+                entré n\'est pas correcte.</p><p><a href="'.htmlspecialchars($_SERVER['HTTP_REFERER']).'">Cliquez ici pour revenir à la page précédente.</a> 
+            <br /><br /><a href="index.php">Cliquez ici pour revenir à la page d accueil.</a></p></div>';
         }
     }
 

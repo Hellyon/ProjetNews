@@ -21,10 +21,9 @@ class CtrlAdmin  {
     function deconnexion() {
         session_destroy();
         session_start();
-        echo '<div align="center"<p>Vous êtes à présent déconnecté <br />
-        Cliquez <a href="'.htmlspecialchars($_SERVER['HTTP_REFERER']).'">ici</a> 
-        pour revenir à la page précédente.<br />
-        Cliquez <a href="./index.php">ici</a> pour revenir à la page principale</p></div>';
+        echo '<div align="center">Vous êtes à présent déconnecté
+        <a href="'.htmlspecialchars($_SERVER['HTTP_REFERER']).'">Cliquez ici pour revenir à la page précédente.</a> 
+        <a href="./index.php">Cliquez ici pour revenir à la page principale.</a></div>';
     }
     function gererNews(array $dVueEreur){
 

@@ -25,6 +25,7 @@ use PDO;
             return $results;
         }
         public function findByCountry($pays, $start, $limit){
+
             $query = "SELECT * FROM News WHERE pays = :pays LIMIT :start, :limit;";
             $this->con->executeQuery($query, array(":pays" => array($pays, PDO::PARAM_STR), ":start" => array($start, PDO::PARAM_INT), ":limit" => array($limit, PDO::PARAM_INT)));
             $results = $this->con->getResults();

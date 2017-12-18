@@ -80,5 +80,19 @@ div{
     width: auto;
     margin-right: 15px;
 }
+table{
+    width: 90%;
+    border-collapse: collapse;
+}
+table, tr, td, th {
+    border-style: solid;
+    border-color: #01150A;
+}
+td{
+    background-color: #133622;
+}
+tr, th{
+    background-color: #082615;
+}
 /* http://paletton.com/#uid=4500N0kkK9t0000ggbPp86EuE3N Pour la palette de couleur */
 /* https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP pour les erreurs WEB*/

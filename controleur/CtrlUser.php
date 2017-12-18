@@ -75,11 +75,11 @@ class CtrlUser {
         $dVueErreur[] =	"EREEUR 404 - INTROUVABLE</br>La page demandée n'existe pas !!";
         require ($rep.$vues['erreur']);
     }
-    function erreur041(array  $dVueErreur){
+    function erreur401(array  $dVueErreur){
         global $rep, $vues;
         $dVueErreur[] =	"EREEUR 401 - UNAUTHORIZED</br> Accès non identifiée interdite !!";
         require ($rep.$vues['erreur']);
     }
 
-}//fin class
+}//fin classe
 ?>
