@@ -13,11 +13,16 @@
          * Time: 15:49
          */
         try {
-            foreach ($results as $news) {
-                echo ("<tr>");
-                echo ($news);
-                echo ("</tr>");
+            $string = NULL;
+            foreach ($parserResults[0]->channel as $channel) {
+                foreach ($channel->item as $item){
+                    $string .= "<tr>";
+                    $string .= "<td>".$item->pubDate."</td>".'<td><img src="'.$channel->image->url.'"/> '.$channel->title.' </td>'.'<td><a href="'.$item->link.'">'
+                    .$item->title.'</a></td>';
+                    $string .= "</tr>";
+                }
             }
+            echo($string);
         }
         catch(\Exception $e){
             global $rep, $vues;

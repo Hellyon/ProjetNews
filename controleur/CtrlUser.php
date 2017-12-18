@@ -2,6 +2,8 @@
 namespace controleur;
 use config\Validation;
 use DAL\AdminGateway;
+use DAL\NewsGateway;
+use parser\XmlParser;
 
 class CtrlUser {
 
@@ -14,18 +16,16 @@ class CtrlUser {
 
     function Reinit($con) {
         global $rep,$vues; // nécessaire pour utiliser variables globales
-        global $dsn, $user, $pass; // Variables globales pour la BDD
-        $newsGateway = new \DAL\NewsGateway($con);
-        $num = 1;
-        $start = ($num - 1) * 10;
-        $limit = 10;
-        $results = $newsGateway->findByCountry('FR', $start, $limit);
-        require ($rep.$vues['mainPage']);
+        $gtw = new NewsGateway($con);
+        $results = $gtw->selectAll();
+        $parser = new XmlParser($results);
+        $parser->parseAllRss();
+        $parserResults = $parser->getResult();
+        require($rep.$vues['mainPage']);
     }
 
     function connexionAdmin(){
         global $rep,$vues;
-
         $dVue = array (
             'admin' => "",
             'mdp' => "",
@@ -81,5 +81,4 @@ class CtrlUser {
         require ($rep.$vues['erreur']);
     }
 
-}//fin class
-?>
+}

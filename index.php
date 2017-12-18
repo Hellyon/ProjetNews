@@ -16,6 +16,8 @@ $myLibLoader = new SplClassLoader('modeles', './');
 $myLibLoader->register();
 $myLibLoader = new SplClassLoader('DAL', './');
 $myLibLoader->register();
+$myLibLoader = new SplClassLoader('parser', './');
+$myLibLoader->register();
 
 //Header du site
 require("vues/header.php");
