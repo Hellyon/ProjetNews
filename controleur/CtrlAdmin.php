@@ -103,6 +103,16 @@ class CtrlAdmin  {
             require ($rep.$vues['erreur']);
         }
     }
+    function selectnbNews($con){
+        global $rep,$vues;
+        $dVue = array (
+            'nbNews' => "",
+        );
+        $nbNewsGateway = new nbNewsGateway($con);
+
+
+        require ($rep.$vues['supprimerRSS']);
+    }
 
 }//fin class
 ?>

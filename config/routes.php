@@ -53,4 +53,18 @@
             'param' => '$con',
             'erreur' => 'erreur403'
         ],
+        'updateNbNews' => [
+            'ctrl' => '\controleur\ctrlAdmin',
+            'action' => 'updateNbNews',
+            'admin' => 'true',
+            'param' => '$con',
+            'erreur' => 'erreur403'
+        ],
+        'validationUpdateNbNews' =>[
+            'ctrl' => '\controleur\ctrlAdmin',
+            'action' => 'validationUpdateNbNews',
+            'admin' => 'true',
+            'param' => '$con',
+            'erreur' => 'erreur403'
+        ]
     ];
