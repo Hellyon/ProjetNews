@@ -25,13 +25,10 @@ class CtrlAdmin  {
         <a href="'.htmlspecialchars($_SERVER['HTTP_REFERER']).'">Cliquez ici pour revenir à la page précédente.</a> 
         <a href="./index.php">Cliquez ici pour revenir à la page principale.</a></div>';
     }
-    function gererNews(array $dVueEreur){
+    function supprimerRSS($con){
 
     }
-    function supprimerNews(array $dVueEreur){
-
-    }
-    function ajouterNews(array $dVueEreur){
+    function ajouterRSS($con){
 
     }
 }//fin class

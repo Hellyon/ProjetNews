@@ -26,5 +26,17 @@
             'ctrl' => '\controleur\CtrlAdmin',
             'action' => 'deconnexion',
             'admin' => 'true'
+        ],
+        'ajouterRSS' => [
+            'ctrl' => '\controleur\ctrlAdmin',
+            'action' => 'ajouterRSS',
+            'admin' => 'true',
+            'param' => '$con',
+        ],
+        'supprimerRSS' => [
+            'ctrl' => '\controleur\ctrlAdmin',
+            'action' => 'supprimerRSS',
+            'admin' => 'true',
+            'param' => '$con',
         ]
     ];

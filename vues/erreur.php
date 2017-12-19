@@ -12,6 +12,7 @@
         foreach ($dVueErreur as $value){
             echo ("<div align='center'>$value</div>");
         }
+        exit(1);
     }
     ?>
 </div>

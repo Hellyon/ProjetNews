@@ -11,7 +11,7 @@ $dConfig['includes']= array('controleur/Validation.php');
 
 $user= 'root';
 $pass='';
-$dsn='mysql:host=localhost;dbname=dbtabarroso';
+$dsn='mysql:host=localhost;dbname=dbilbenjello';
 //Vues
 
 $vues['erreur']='vues\erreur.php';
