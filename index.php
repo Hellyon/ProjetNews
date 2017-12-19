@@ -49,14 +49,4 @@ catch(PDOException $e){
     $dVueErreur[] =	"Erreur connection à la base de données !!";
     require ($rep.$vues['erreur']);
 }
-
-
-if(!isset($_SESSION['pseudo_admin'])){
-    echo('<div><a href="index.php?route=connexionAdmin">Connexion Administrateur</a></div>');
-}
-else{
-    echo('<div><a href="index.php?route=deconnexion">Se deconnecter</a></div>');
-    echo('<div><a href="index.php?route=ajouterRSS">Ajouter flux RSS</a></div>');
-    echo('<div><a href="index.php?route=supprimerRSS">Supprimer flux RSS</a></div>');
-}
-?>
+require("vues/footer.php");
