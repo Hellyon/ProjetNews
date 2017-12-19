@@ -46,5 +46,11 @@
             'admin' => 'true',
             'param' => '$con',
             'erreur' => 'erreur403'
-        ]
+        ],
+        'validationSupprimerRSS' =>[
+            'ctrl' => '\controleur\CtrlAdmin',
+            'action' => 'validationSupprimerRSS',
+            'param' => '$con',
+            'erreur' => 'erreur403'
+        ],
     ];

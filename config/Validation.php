@@ -32,6 +32,14 @@ class Validation
         }
     }
 
+    static function val_supp(string $site){
+        $dVueErreur = array();
+        if ($site != filter_var($site, FILTER_SANITIZE_STRING)) {
+            $dVueErreur[] = "tentative d'injection de code (attaque sécurité)";
+            $site = "";
+        }
+    }
+
     static function val_ajout(string &$url, string &$site){
         $dVueErreur = array();
         if (!isset($url) || $url == "") {
@@ -43,9 +51,10 @@ class Validation
             $dVueErreur[] = "tentative d'injection de code (attaque sécurité)";
             $url = "";
         } else {
-            if (!fichierDistantExiste($url)) {
-                //(!false === file_get_contents($url,0,null,0,1))
-                $dVueErreur[] = "URL du flux RSS innexistant (ou introuvable, vérifiez votre connexion internet)";
+            if (!Validation::fichierDistantExiste($url)) {
+                if(false == file_get_contents($url,0,null,0,1)){
+                    $dVueErreur[] = "URL du flux RSS innexistant (ou introuvable, vérifiez votre connexion internet)";
+                }
             }
             return $dVueErreur;
         }

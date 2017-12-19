@@ -1,98 +1,18 @@
-html {
+.jumbotron {
 	background-image: url("ressources/Background2.jpg");
 	background-repeat:no-repeat;
-	background-color: #43213D;
-   background-position: top center;
+    background-position: top center;
 }
 
-body{
-	margin: 0;
-	flex-direction: column;
-	min-height: 100vh;
+.title{
+    color: black;
 }
-header {
-    width: 100%;
+.title:visited{
+    color: black;
 }
-
-h1{
-	text-shadow: -5px 5px 5px;
-	text-align: center;
-	height: 310px;
-    font-family: Georgia;
-    color: ivory;
-    outline: none;
+.title:hover{
+    color: black;
 }
-h2{
-    font-family: Georgia;
-    color: lightgreen;
-    text-align: center;
+.title:active{
+    color: black;
 }
-a:hover{
-	color: red;
-}
-
-a:visited{
-	color: ivory;
-}
-
-a{
-    text-decoration: none;
-    color: ivory;
-}
-
-nav{
-    display: flex;
-	text-align: center;
-	height: auto;
-}
-.navigation-lien{
-    display: inline-block;
-    height: auto;
-    width: auto;
-    margin-right: 15px;
-}
-.menu{
-    margin: 0px;
-    display: inline-flex;
-}
-nav{
-    display: flex;
-    text-align: center;
-    height: auto;
-}
-.Rubrique{
-    display: flex;
-    align-items:stretch;
-    justify-content: center;
-    background-color: #36132F;
-    font-size: 40px;
-    width: 100%;
-}
-
-div{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.navigation-lien{
-    display: inline-block;
-    height: auto;
-    width: auto;
-    margin-right: 15px;
-}
-table{
-    width: 90%;
-    border-collapse: collapse;
-}
-table, tr, td, th {
-    border-style: solid;
-    border-color: #01150A;
-}
-td{
-    background-color: #133622;
-}
-tr, th{
-    background-color: #082615;
-}
-/* http://paletton.com/#uid=4500N0kkK9t0000ggbPp86EuE3N Pour la palette de couleur */
-/* https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP pour les erreurs WEB*/

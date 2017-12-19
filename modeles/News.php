@@ -10,26 +10,15 @@ namespace modeles;
 class News
 {
     private $url;
-    private $titre;
-    private $date;
-    private $pays;
-    private $miniature;
     private $site;
 
-    public function __construct($url, $titre, $date, $pays, $miniature, $site)
+    public function __construct($url, $site)
     {
         $this->url = $url;
-        $this->titre = $titre;
-        $this->date = $date;
-        $this->pays = $pays;
-        $this->miniature = $miniature;
         $this->site = $site;
     }
 
-    public function __toString()
-    {
-        return "<td> le $this->date </td>
-                <td><img src='/images/$this->miniature'>$this->site</td>
-                <td><a href='$this->url'>$this->titre</a></td>";
+    public function getSite(){
+        return $this->site;
     }
 }

@@ -64,8 +64,45 @@ class CtrlAdmin  {
             require ($rep.$vues['erreur']);
         }
     }
-    function supprimerRSS($con){
 
+    function supprimerRSS($con){
+        global $rep,$vues;
+        $dVue = array (
+            'url' => "",
+            'site' => "",
+        );
+        $newsGateway = new NewsGateway($con);
+        $tRSS = $newsGateway->findAll();
+
+        require ($rep.$vues['supprimerRSS']);
     }
+    function validationSupprimerRSS($con){
+         global $rep,$vues;
+        //si exception, ca remonte !!!
+        $site=$_POST['txtsite']; // nom du site à supprimer de la liste de flux
+
+        print($site);
+        $dVueErreur = Validation::val_supp($site);
+        if(isset($dVueErreur) && count($dVueErreur) >= 1){
+            require ($rep.$vues['erreur']);
+            return;
+        }
+
+        try{
+            $newsGateway =new NewsGateway($con);
+            $message = $newsGateway->delete($site);
+            echo $message;
+        }
+        catch (\PDOException $e) {
+            //si erreur BD
+            $dVueErreur[] =	"$e";
+            require ($rep.$vues['erreur']);
+        }
+        catch (Exception $e2) {
+            $dVueErreur[] =	"Erreur inattendue!!! ";
+            require ($rep.$vues['erreur']);
+        }
+    }
+
 }//fin class
 ?>

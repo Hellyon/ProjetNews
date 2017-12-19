@@ -30,7 +30,7 @@ class CtrlUser {
             if($result == NULL)
                 $site = NULL;
             else
-            $parserResults = $parser->parse($result[0]['url']);
+                $parserResults = $parser->parse($result[0]['url']);
         }
         require($rep.$vues['mainPage']);
     }
@@ -68,7 +68,7 @@ class CtrlUser {
             require ($rep.$vues['erreur']);
         }
     }
-    function erreur404(array $dVueErreur){
+        function erreur404(array $dVueErreur){
         global $rep, $vues;
         $dVueErreur[] =	"EREEUR 404 - INTROUVABLE</br>La page demandée n'existe pas !!";
         require ($rep.$vues['erreur']);

@@ -22,12 +22,34 @@ use PDO;
             return ("<div align='center'>Le flux RSS de $site a bien été ajouté avec l'adresse suivante : </br>$url</div>");
         }
 
+        public function delete($site){
+            $query ="DELETE FROM News WHERE site = :site;";
+            $this->con->executeQuery($query, array(":site" => array ($site, PDO::PARAM_STR)));
+            return ("<div align='center'>Le flux RSS de $site a bien été supprimé</div>");
+        }
+
         public function findByCountry($pays, $start, $limit){
 
             $query = "SELECT * FROM News WHERE pays = :pays LIMIT :start, :limit;";
             $this->con->executeQuery($query, array(":pays" => array($pays, PDO::PARAM_STR), ":start" => array($start, PDO::PARAM_INT), ":limit" => array($limit, PDO::PARAM_INT)));
             $results = $this->con->getResults();
-            return $results;
+            return $this->getInstance($results);
+        }
+
+        private function getInstance(array $results){
+            $retour = array();
+            foreach($results as $news){
+                $retour[]= new \modeles\News($news['url'], $news['site']);
+            }
+            return $retour;
+        }
+
+        public function findAll(){
+            $query = "SELECT * FROM News;";
+            $this->con->executeQuery($query);
+            $results = $this->con->getResults();
+
+            return $this->getInstance($results);
         }
 
         public function selectAll(){

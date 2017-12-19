@@ -28,7 +28,7 @@ if (isset($dVue))
                 <td><input name="txturl" value="<?= $dVue['url']  ?>" type="text" size="50" required></td>
             </tr>
             <tr><td>Nom du site</td>
-                <td><input name="txtsite" value="<?= $dVue['site'] ?>" type="text" size="50" required></td>
+                <td><input name="txtsite" value="<?= $dVue['site'] ?>" type="text" size="30" required></td>
             </tr>
             <tr>
         </table>
