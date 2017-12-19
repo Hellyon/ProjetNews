@@ -43,9 +43,10 @@ class Validation
             $dVueErreur[] = "tentative d'injection de code (attaque sécurité)";
             $url = "";
         } else {
-            if (!fichierDistantExiste($url)) {
-                //(!false === file_get_contents($url,0,null,0,1))
-                $dVueErreur[] = "URL du flux RSS innexistant (ou introuvable, vérifiez votre connexion internet)";
+            if (!Validation::fichierDistantExiste($url)) {
+                if(false == file_get_contents($url,0,null,0,1)){
+                    $dVueErreur[] = "URL du flux RSS innexistant (ou introuvable, vérifiez votre connexion internet)";
+                }
             }
             return $dVueErreur;
         }

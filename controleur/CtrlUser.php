@@ -65,7 +65,7 @@ class CtrlUser {
             require ($rep.$vues['erreur']);
         }
     }
-    }    function erreur404(array $dVueErreur){
+        function erreur404(array $dVueErreur){
         global $rep, $vues;
         $dVueErreur[] =	"EREEUR 404 - INTROUVABLE</br>La page demandée n'existe pas !!";
         require ($rep.$vues['erreur']);
@@ -79,5 +79,4 @@ class CtrlUser {
         $dVueErreur[] =	"EREEUR 401 - NON AUTORISE</br> Accès non autorisée !!";
         require ($rep.$vues['erreur']);
     }
-
 }

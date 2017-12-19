@@ -21,6 +21,12 @@ use PDO;
                 ":site" => array ($site, PDO::PARAM_STR)));
             return ("<div align='center'>Le flux RSS de $site a bien été ajouté avec l'adresse suivante : </br>$url</div>");
         }
+        public function delete($url, $site){
+            $query ="DELETE * FROM News WHERE site =:site AND url = :url;";
+            $this->con->executeQuery($query, array(":url" => array ($url, PDO::PARAM_STR),
+                ":site" => array ($site, PDO::PARAM_STR)));
+            return ("<div align='center'>Le flux RSS de $site a bien été ajouté avec l'adresse suivante : </br>$url</div>");
+        }
 
         public function findByCountry($pays, $start, $limit){
 
