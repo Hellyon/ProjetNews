@@ -9,13 +9,11 @@ use SimpleXMLElement;
 
 class XmlParser
 {
-    private $pathTab;
     private $result = array();
     private $depth;
 
-    public function __construct($pathTab)
+    public function __construct()
     {
-        $this->pathTab = $pathTab;
         $this->depth = 0;
         $this->result = array();
     }
@@ -23,13 +21,6 @@ class XmlParser
     public function getResult()
     {
         return $this->result;
-    }
-
-    public function parseAllRss()
-    {
-        foreach ($this->pathTab as $path) {
-            $this->result[] = $this->parse($path['url']);
-        }
     }
 
     /**

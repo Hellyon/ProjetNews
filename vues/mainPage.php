@@ -1,34 +1,45 @@
-<html>
-    <table align="center">
-        <tr>
-            <th>Date</th>
-            <th>Site</th>
-            <th>URL</th>
-        </tr>
-        <?php
-        /**
-         * Created by PhpStorm.
-         * User: ilbenjello
-         * Date: 04/12/17
-         * Time: 15:49
-         */
-        try {
-            $string = NULL;
-            foreach ($parserResults[0]->channel as $channel) {
-                foreach ($channel->item as $item){
-                    $string .= "<tr>";
-                    $string .= "<td>".$item->pubDate."</td>".'<td><img src="'.$channel->image->url.'"/> '.$channel->title.' </td>'.'<td><a href="'.$item->link.'">'
-                    .$item->title.'</a></td>';
-                    $string .= "</tr>";
-                }
+
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ilbenjello
+ * Date: 04/12/17
+ * Time: 15:49
+ */
+$string = NULL;
+$string .= "<table align=\"center\">
+            <tr>
+                <th>Site</th>
+            </tr>";
+foreach ($results as $result){
+    $string .= "<tr><td><a href='./index.php?site=".$result['site']."'>".$result['site']."</a></td>";
+}
+echo($string);
+if(isset($_COOKIE['site'])) {
+    try {
+        $string = NULL;
+        foreach ($parserResults->channel as $channel) {
+            $string .= "<table align=\"center\">
+            <tr>
+                <th>Date</th>
+                <th>Site</th>
+                <th>URL</th>
+            </tr>";
+            foreach ($channel->item as $item) {
+                $string .= "<tr>";
+                $string .= "<td>" . $item->pubDate . "</td>" . '<td><img src="' . $channel->image->url . '"/> ' . $channel->title . ' </td>' . '<td><a href="' . $item->link . '">'
+                    . $item->title . '</a></td>';
+                $string .= "</tr>";
             }
-            echo($string);
+            $string .= "</table>";
         }
-        catch(\Exception $e){
-            global $rep, $vues;
-            $dVueEreur[] =	"Erreur inattendue!!! ";
-            require ($rep.$vues['erreur']);
-        }
-        ?>
-    </table>
-</html>
+        echo($string);
+    } catch (\Exception $e) {
+        global $rep, $vues;
+        $dVueEreur[] = "Erreur inattendue!!! ";
+        require($rep . $vues['erreur']);
+    }
+}
+else{
+    echo("<div><p>Bonjour, veuillez choisir un flux.</p></div>");
+}

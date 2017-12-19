@@ -36,4 +36,11 @@ use PDO;
             $results = $this->con->getResults();
             return $results;
         }
+
+        public function selectFeed($site){
+            $query = "SELECT * FROM News WHERE site = :site;";
+            $this->con->executeQuery($query, array(":site" => array($site, PDO::PARAM_STR)));
+            $results = $this->con->getResults();
+            return $results;
+        }
     }

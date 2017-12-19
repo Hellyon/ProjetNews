@@ -15,12 +15,20 @@ class CtrlUser {
 
 
     function Reinit($con) {
+        if(isset($_GET['site'])){
+            $site = filter_var($_GET['site'],FILTER_SANITIZE_STRING);
+            if($site == $_GET['site']){
+                setcookie("site",$site,time()+3600);
+            }
+        }
         global $rep,$vues; // nécessaire pour utiliser variables globales
         $gtw = new NewsGateway($con);
         $results = $gtw->selectAll();
-        $parser = new XmlParser($results);
-        $parser->parseAllRss();
-        $parserResults = $parser->getResult();
+        if(isset($_COOKIE['site'])){
+            $result = $gtw->selectFeed($_COOKIE['site']);
+            $parser = new XmlParser();
+            $parserResults = $parser->parse($result[0]['url']);
+        }
         require($rep.$vues['mainPage']);
     }
 
@@ -33,15 +41,6 @@ class CtrlUser {
 
         require ($rep.$vues['connexionAdmin']);
     }
-
- /*   static function connexion($login, $mdp){
-
-        $admin = new \modeles\Admin($login, hash("ripemd160", $mdp));
-        if ($admin == NULL) {
-            return NULL;
-        }
-        $session['username'] = $admin->getUserName();
-    }*/
 
     static function validationConnexion($con) {
         global $rep,$vues;
@@ -67,15 +66,12 @@ class CtrlUser {
         }
     }
 
-    function consulterNews(array $dVueEreur){
-
-    }
     function erreur404(array $dVueErreur){
         global $rep, $vues;
         $dVueErreur[] =	"EREEUR 404 - INTROUVABLE</br>La page demandée n'existe pas !!";
         require ($rep.$vues['erreur']);
     }
-    function erreur041(array  $dVueErreur){
+    function erreur401(array  $dVueErreur){
         global $rep, $vues;
         $dVueErreur[] =	"EREEUR 401 - UNAUTHORIZED</br> Accès non identifiée interdite !!";
         require ($rep.$vues['erreur']);

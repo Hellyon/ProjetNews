@@ -42,7 +42,7 @@ class AdminGateway
 
     private function getInstance(array $results){
         foreach($results as $admin){
-            return new \modeles\Admin($admin['pseudo_admin'], $admin['mdp']);
+            return new \modeles\Admin($admin['login'], $admin['mdp']);
         }
         return NULL;
     }
