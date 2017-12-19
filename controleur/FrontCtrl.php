@@ -27,7 +27,7 @@ class FrontCtrl {
                     }
                     else{
                         $ctrl = new CtrlUser();
-                        $ctrl->erreur401($dVueErreur);
+                        $ctrl->{$routes[$_GET['route']]['erreur']}($dVueErreur);
                     }
                 }
                 else{

@@ -15,11 +15,11 @@ use PDO;
         public function __construct(Connexion $con){
             $this->con = $con;
         }
-        public function insert($url){
-            $query ="INSERT INTO News values(:url);";
-            $this->con->executeQuery($query, array(":url" => array ($url, PDO::PARAM_STR)));
-            $results=$this->con->getResults();
-            return $results;
+        public function insert($url, $site){
+            $query ="INSERT INTO News values(:url, :site);";
+            $this->con->executeQuery($query, array(":url" => array ($url, PDO::PARAM_STR),
+                ":site" => array ($site, PDO::PARAM_STR)));
+            return ("<div align='center'>Le flux RSS de $site a bien été ajouté avec l'adresse suivante : </br>$url</div>");
         }
 
         public function findByCountry($pays, $start, $limit){

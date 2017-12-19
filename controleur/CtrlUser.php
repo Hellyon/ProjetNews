@@ -41,7 +41,6 @@ class CtrlUser {
 
         require ($rep.$vues['connexionAdmin']);
     }
-
     static function validationConnexion($con) {
         global $rep,$vues;
         //si exception, ca remonte !!!
@@ -56,24 +55,28 @@ class CtrlUser {
             echo $message;
         }
         catch (\PDOException $e) {
-            //si erreur BD, pas le cas ici
-            $dVueEreur[] =	"Erreur inattendue!!! ";
+            //si erreur BD
+            $dVueErreur[] =	"Erreur BD inattendue!!! ";
             require ($rep.$vues['erreur']);
             }
         catch (Exception $e2) {
-            $dVueEreur[] =	"Erreurdinattendue!!! ";
+
+            $dVueErreur[] =	"Erreur inattendue!!! ";
             require ($rep.$vues['erreur']);
         }
     }
-
-    function erreur404(array $dVueErreur){
+    }    function erreur404(array $dVueErreur){
         global $rep, $vues;
         $dVueErreur[] =	"EREEUR 404 - INTROUVABLE</br>La page demandée n'existe pas !!";
         require ($rep.$vues['erreur']);
     }
+    function erreur403(array $dVueErreur){        global $rep, $vues;
+        $dVueErreur[] =	"EREEUR 403 - INTERDIT</br>Accès interdit !!";
+        require ($rep.$vues['erreur']);
+    }
     function erreur401(array  $dVueErreur){
         global $rep, $vues;
-        $dVueErreur[] =	"EREEUR 401 - UNAUTHORIZED</br> Accès non identifiée interdite !!";
+        $dVueErreur[] =	"EREEUR 401 - NON AUTORISE</br> Accès non autorisée !!";
         require ($rep.$vues['erreur']);
     }
 

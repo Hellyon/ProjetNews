@@ -28,8 +28,15 @@ class XmlParser
      */
     public function parse($path)
     {
-        $content = file_get_contents($path);
-        $result = new SimpleXMLElement($content);
-        return $result;
+        if(!file_get_contents($path)){
+            global $rep, $vues;
+            $dVueErreur[] =	"Erreur lecture du flux RSS !!";
+            require ($rep.$vues['erreur']);
+        }
+        else{
+            $content = file_get_contents($path);
+            $result = new SimpleXMLElement($content);
+            return $result;
+        }
     }
 }
