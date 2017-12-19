@@ -17,16 +17,19 @@ class CtrlUser {
     function Reinit($con) {
         if(isset($_GET['site'])){
             $site = filter_var($_GET['site'],FILTER_SANITIZE_STRING);
-            if($site == $_GET['site']){
-                setcookie("site",$site,time()+3600);
+            if($site != $_GET['site']){
+                $site = NULL;
             }
         }
         global $rep,$vues; // nécessaire pour utiliser variables globales
         $gtw = new NewsGateway($con);
         $results = $gtw->selectAll();
-        if(isset($_COOKIE['site'])){
-            $result = $gtw->selectFeed($_COOKIE['site']);
+        if(isset($_GET['site'])){
+            $result = $gtw->selectFeed($site);
             $parser = new XmlParser();
+            if($result == NULL)
+                $site = NULL;
+            else
             $parserResults = $parser->parse($result[0]['url']);
         }
         require($rep.$vues['mainPage']);
@@ -65,7 +68,7 @@ class CtrlUser {
             require ($rep.$vues['erreur']);
         }
     }
-    }    function erreur404(array $dVueErreur){
+    function erreur404(array $dVueErreur){
         global $rep, $vues;
         $dVueErreur[] =	"EREEUR 404 - INTROUVABLE</br>La page demandée n'existe pas !!";
         require ($rep.$vues['erreur']);
@@ -79,5 +82,4 @@ class CtrlUser {
         $dVueErreur[] =	"EREEUR 401 - NON AUTORISE</br> Accès non autorisée !!";
         require ($rep.$vues['erreur']);
     }
-
 }

@@ -15,7 +15,7 @@ foreach ($results as $result){
     $string .= "<tr><td><a href='./index.php?site=".$result['site']."'>".$result['site']."</a></td>";
 }
 echo($string);
-if(isset($_COOKIE['site'])) {
+if(isset($site)) {
     try {
         $string = NULL;
         foreach ($parserResults->channel as $channel) {
