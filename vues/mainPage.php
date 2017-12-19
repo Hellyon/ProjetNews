@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Created by PhpStorm.
@@ -6,16 +5,23 @@
  * Date: 04/12/17
  * Time: 15:49
  */
+
 $string = NULL;
 $string .= "<table align=\"center\">
             <tr>
                 <th>Site</th>
             </tr>";
-foreach ($results as $result){
-    $string .= "<tr><td><a href='./index.php?site=".$result['site']."'>".$result['site']."</a></td>";
+if(count($results) >= 1){
+    foreach ($results as $result){
+        $string .= "<tr><td><a href='./index.php?site=".$result['site']."'>".$result['site']."</a></td>";
+    }
 }
-echo($string);
-if(isset($_COOKIE['site'])) {
+else{
+        print("<div><p>Il n'y a pas de news à afficher. Ajoutez des flux à la base de données !</p></div>");
+        return;
+}
+if(isset($site)) {
+    echo($string);
     try {
         $string = NULL;
         foreach ($parserResults->channel as $channel) {

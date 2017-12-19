@@ -32,6 +32,14 @@ class Validation
         }
     }
 
+    static function val_supp(string $site){
+        $dVueErreur = array();
+        if ($site != filter_var($site, FILTER_SANITIZE_STRING)) {
+            $dVueErreur[] = "tentative d'injection de code (attaque sécurité)";
+            $site = "";
+        }
+    }
+
     static function val_ajout(string &$url, string &$site){
         $dVueErreur = array();
         if (!isset($url) || $url == "") {

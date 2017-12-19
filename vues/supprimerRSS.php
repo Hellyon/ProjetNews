@@ -9,7 +9,7 @@ if (isset($dVue))
 ?>
 <div align="center">
 
-    <h2>Ajouter un flux - formulaire</h2>
+    <h2>Supprimer un flux - formulaire</h2>
     <?php
     if (isset($_SESSION['droits'])){
         $droits = filter_var($_SESSION['droits'], FILTER_SANITIZE_NUMBER_INT);
@@ -25,18 +25,16 @@ if (isset($dVue))
     <form method="post" name="formSupprRSS" action="index.php?route=validationSupprimerRSS">
         <table> <tr>
                 <?php
+                if(count($tRSS) >= 1){
                     foreach ($tRSS as $RSS){
-                        print('<td><input name="SuppRSS" value="$RSS" type="submit" value="Supprimer"></td>');
+                        print("<td><input name='txtsite' value='{$RSS->getSite()}' type='submit'></td>");
                     }
+                }
+                else{
+                    print("<p>Il n'y a pas de flux à supprimer</br></p>");
+                }
                 ?>
         </table>
-        <table> <tr>
-                <td><input type="submit" value="Supprimer"></td>
-                </td> </tr> </table>
-
-        <!-- action !!!!!!!!!! -->
-        <input type="hidden" name="action" value="validationFormulaire">
-    </form>
 </div>
 </body>
 </html>

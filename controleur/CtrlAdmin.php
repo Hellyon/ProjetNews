@@ -65,21 +65,24 @@ class CtrlAdmin  {
         }
     }
 
-    function supprimerRSS(){
+    function supprimerRSS($con){
         global $rep,$vues;
         $dVue = array (
             'url' => "",
             'site' => "",
         );
+        $newsGateway = new NewsGateway($con);
+        $tRSS = $newsGateway->findAll();
 
         require ($rep.$vues['supprimerRSS']);
     }
     function validationSupprimerRSS($con){
          global $rep,$vues;
         //si exception, ca remonte !!!
-        $rss=$_POST['suppRSS']; // flux rss à supprimer
+        $site=$_POST['txtsite']; // nom du site à supprimer de la liste de flux
 
-        $dVueErreur = Validation::val_supp($rss);
+        print($site);
+        $dVueErreur = Validation::val_supp($site);
         if(isset($dVueErreur) && count($dVueErreur) >= 1){
             require ($rep.$vues['erreur']);
             return;
@@ -87,7 +90,7 @@ class CtrlAdmin  {
 
         try{
             $newsGateway =new NewsGateway($con);
-            $message = $newsGateway->delete();
+            $message = $newsGateway->delete($site);
             echo $message;
         }
         catch (\PDOException $e) {
@@ -100,6 +103,6 @@ class CtrlAdmin  {
             require ($rep.$vues['erreur']);
         }
     }
-    }
+
 }//fin class
 ?>

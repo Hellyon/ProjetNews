@@ -17,17 +17,20 @@ class CtrlUser {
     function Reinit($con) {
         if(isset($_GET['site'])){
             $site = filter_var($_GET['site'],FILTER_SANITIZE_STRING);
-            if($site == $_GET['site']){
-                setcookie("site",$site,time()+3600);
+            if($site != $_GET['site']){
+                $site = NULL;
             }
         }
         global $rep,$vues; // nécessaire pour utiliser variables globales
         $gtw = new NewsGateway($con);
         $results = $gtw->selectAll();
-        if(isset($_COOKIE['site'])){
-            $result = $gtw->selectFeed($_COOKIE['site']);
+        if(isset($_GET['site'])){
+            $result = $gtw->selectFeed($site);
             $parser = new XmlParser();
-            $parserResults = $parser->parse($result[0]['url']);
+            if($result == NULL)
+                $site = NULL;
+            else
+                $parserResults = $parser->parse($result[0]['url']);
         }
         require($rep.$vues['mainPage']);
     }
