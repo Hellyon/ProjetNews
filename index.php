@@ -1,15 +1,25 @@
 <?php
 
-if(!isset($_SESSION['pseudo_admin'])){
-    session_start();
-}
-else{
+session_start();
+if (isset($_SESSION['pseudo_admin'])){
     if($_SESSION['pseudo_admin'] != filter_var($_SESSION['pseudo_admin'], FILTER_SANITIZE_STRING)){
         print("Session expirée : Déconnexion");
         header('Location: index.php?route=deconnexion');
         exit();
     }
 }
+if (isset($_SESSION['droits'])){
+    if($_SESSION['droits'] != filter_var($_SESSION['droits'], FILTER_SANITIZE_STRING)){
+        print("Session expirée : Déconnexion");
+        header('Location: index.php?route=deconnexion');
+        exit();
+    }
+}
+else{
+    $_SESSION['droits'] = 0;
+}
+
+
 
 //chargement config
 require_once(__DIR__.'/config/config.php');
@@ -46,7 +56,7 @@ if(!isset($_SESSION['pseudo_admin'])){
 }
 else{
     echo('<div><a href="index.php?route=deconnexion">Se deconnecter</a></div>');
-    echo('<div><a href="index.php?route=supprimerRSS">Ajouter flux RSS</a></div>');
-    echo('<div><a href="index.php?route=ajouterRSS">Supprimer flux RSS</a></div>');
+    echo('<div><a href="index.php?route=ajouterRSS">Ajouter flux RSS</a></div>');
+    echo('<div><a href="index.php?route=supprimerRSS">Supprimer flux RSS</a></div>');
 }
 ?>

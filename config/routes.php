@@ -25,18 +25,26 @@
         'deconnexion' => [
             'ctrl' => '\controleur\CtrlAdmin',
             'action' => 'deconnexion',
-            'admin' => 'true'
+            'admin' => 'true',
+            'erreur' => 'erreur401',
         ],
         'ajouterRSS' => [
             'ctrl' => '\controleur\ctrlAdmin',
             'action' => 'ajouterRSS',
             'admin' => 'true',
+            'erreur' => 'erreur403'
+        ],
+        'validationAjouterRSS' =>[
+            'ctrl' => '\controleur\CtrlAdmin',
+            'action' => 'validationAjouterRSS',
             'param' => '$con',
+            'erreur' => 'erreur403'
         ],
         'supprimerRSS' => [
             'ctrl' => '\controleur\ctrlAdmin',
             'action' => 'supprimerRSS',
             'admin' => 'true',
             'param' => '$con',
+            'erreur' => 'erreur403'
         ]
     ];

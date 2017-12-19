@@ -17,5 +17,6 @@ $dsn='mysql:host=localhost;dbname=dbilbenjello';
 $vues['erreur']='vues\erreur.php';
 $vues['connexionAdmin']='vues\connexionAdmin.php';
 $vues['mainPage']='vues\mainPage.php';
+$vues['ajouterRSS']='vues\ajouterRSS.php';
 
 ?>

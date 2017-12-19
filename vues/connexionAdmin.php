@@ -11,13 +11,14 @@
 
             <h2>Connexion - formulaire</h2>
             <?php
-            if (isset($_SESSION['droits'])) $dVueEreur[]='Erreur utilisateur déjà connecté !</br>Tu n\'aurais jamais du te retrouver là...';
-            if (isset($dVueEreur) && count($dVueEreur)>0) {
-                echo "<h2>ERREUR !!!!!</h2>";
-                foreach ($dVueEreur as $value){
-                    echo $value;
+            if (isset($_SESSION['droits'])){
+                $droits = filter_var($_SESSION['droits'], FILTER_SANITIZE_NUMBER_INT);
+                if($droits == $_SESSION['droits'] && $droits >= 1){
+                    $dVueEreur[]='Erreur utilisateur déjà connecté !</br>Tu n\'aurais jamais du te retrouver là...';
+                    require('erreur.php');
                     return;
-                }}
+                }
+            }
             ?>
 
             <form method="post" name="formCo" action="index.php?route=validationConnexion">
