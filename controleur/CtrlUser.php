@@ -24,10 +24,10 @@ class CtrlUser {
         global $rep,$vues; // nécessaire pour utiliser variables globales
         $gtw = new NewsGateway($con);
         $results = $gtw->selectAll();
-        if(isset($_GET['site'])){
+        if(isset($_GET['site'])) {
             $result = $gtw->selectFeed($site);
             $parser = new XmlParser();
-            if($result == NULL)
+            if ($result == NULL)
                 $site = NULL;
             else
                 $parserResults = $parser->parse($result[0]['url']);

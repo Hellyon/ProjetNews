@@ -20,24 +20,18 @@
                 }
             }
             ?>
-
-            <form method="post" name="formCo" action="index.php?route=validationConnexion">
-            <table> <tr>
-                    <td>Admin</td>
-                    <td><input name="txtAdmin" value="<?= $dVue['admin']  ?>" type="text" size="20"></td>
-                </tr>
-                <tr><td>Mot de passe</td>
-                    <td><input name="txtmdp" value="<?= $dVue['mdp'] ?>" type="text" size="20" required></td>
-                </tr>
-                <tr>
-            </table>
-            <table> <tr>
-                    <td><input type="submit" value="Envoyer"></td>
-                    <td><input type="reset" value="Rétablir"></td>
-                    </td> </tr> </table>
-
-            <!-- action !!!!!!!!!! -->
-            <input type="hidden" name="action" value="validationFormulaire">
+            <form class="formAdmin" method="post" name="formCo" action="index.php?route=validationConnexion">
+                <div class="form-group">
+                    <label for="login">Login:</label>
+                    <input type="text" class="form-control" value="<?= $dVue['admin']  ?>" name="txtAdmin">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" value="<?= $dVue['mdp'] ?>" name="txtmdp">
+                </div>
+                <button type="submit" class="btn btn-primary">Enter</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+                <input type="hidden" name="action" value="validationFormulaire">
             </form>
         </div>
     </body>
