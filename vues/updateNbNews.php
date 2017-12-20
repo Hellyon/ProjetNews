@@ -22,10 +22,10 @@ if (isset($dVue))
     }
     ?>
 
-    <form method="post" name="formUpdateNbNews" action="index.php?route=validationSelectnbNews">
+    <form method="post" name="formUpdateNbNews" action="index.php?route=validationUpdateNbNews">
         <table> <tr>
-                <td>Nombre de news à afficher</td>
-                <td><input name="txtnbN" value="<?= $dVue['news']  ?>" type="text" size="20"></td>
+                <td>Nombre de news à afficher (illimité : 0)</td>
+                <td><input name="txtNbNews" value="<?= $dVue['nbNews']  ?>" type="text" size="20"></td>
             </tr>
         </table>
         <table> <tr>

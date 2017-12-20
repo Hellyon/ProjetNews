@@ -11,6 +11,7 @@
             echo('<li class="nav-item"><a class="nav-link" href="index.php?route=deconnexion">Se deconnecter</a></li>');
             echo('<li class="nav-item"><a class="nav-link" href="index.php?route=ajouterRSS">Ajouter flux RSS</a></li>');
             echo('<li class="nav-item"><a class="nav-link" href="index.php?route=supprimerRSS">Supprimer flux RSS</a></li>');
+            echo('<li class="nav-item"><a class="nav-link" href="index.php?route=updateNbNews">Nombre de News à afficher</a></li>');
         }
         ?>
         <li class="nav-item dropdown">

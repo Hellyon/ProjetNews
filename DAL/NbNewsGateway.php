@@ -7,7 +7,7 @@
  */
 
 namespace DAL;
-
+use PDO;
 
 class NbNewsGateway
 {
@@ -20,8 +20,8 @@ class NbNewsGateway
 
     public function updateNbNews($nbNews)
     {
-        $query = ('UPDATE FROM NbNews SET nbNews = :nbNews WHERE id = 1;');
-        $this->con->executeQuery($query, array(":site" => array ($nbNews, PDO::PARAM_INT)));
+        $query = ('UPDATE NbNews SET nbNews = :nbNews WHERE id = 1;');
+        $this->con->executeQuery($query, array(":nbNews" => array ($nbNews, PDO::PARAM_INT)));
         return "<div>Le nombre de news à afficher a bien été mis à jour !</div>";
 
     }
