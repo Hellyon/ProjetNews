@@ -49,11 +49,15 @@ if(isset($site)) {
                 <th>URL</th>
                 <th>Description</th>
             </tr>";
+            $i = 0;
             foreach ($channel->item as $item) {
+                if($i >= $nbNews->getNbNews())
+                    break;
                 $string .= "<tr>";
                 $string .= "<td>" . $item->pubDate . "</td>" . '<td><a href="' . $item->link . '">'
                     . $item->title . '</a></td><td>'.strip_tags($item->description).'</td>';
                 $string .= "</tr>";
+                $i++;
             }
             $string .= "</table>";
         }

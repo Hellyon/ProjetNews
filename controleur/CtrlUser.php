@@ -2,6 +2,7 @@
 namespace controleur;
 use config\Validation;
 use DAL\AdminGateway;
+use DAL\NbNewsGateway;
 use DAL\NewsGateway;
 use parser\XmlParser;
 
@@ -15,6 +16,8 @@ class CtrlUser {
 
 
     function Reinit($con) {
+        $gtwNb = new NbNewsGateway($con);
+        $nbNews = $gtwNb->selectNbNews();
         if(isset($_GET['site'])){
             $site = filter_var($_GET['site'],FILTER_SANITIZE_STRING);
             if($site != $_GET['site']){
