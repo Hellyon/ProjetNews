@@ -19,13 +19,20 @@ use PDO;
             $query ="INSERT INTO News values(:url, :site);";
             $this->con->executeQuery($query, array(":url" => array ($url, PDO::PARAM_STR),
                 ":site" => array ($site, PDO::PARAM_STR)));
-            return ("<div align='center'>Le flux RSS de $site a bien été ajouté avec l'adresse suivante : </br>$url</div>");
+            return ('<div align="center">Le flux RSS de '.$site.' a bien été ajouté avec l\'adresse suivante : </br>'.$url.'<p><a href='.htmlspecialchars($_SERVER['HTTP_REFERER']).'>Cliquez ici pour revenir à la page précédente.</a> 
+            <br /><br /><a href="index.php">Cliquez ici pour revenir à la page d accueil.</a></p></div>');
         }
 
         public function delete($site){
             $query ="DELETE FROM News WHERE site = :site;";
             $this->con->executeQuery($query, array(":site" => array ($site, PDO::PARAM_STR)));
-            return ("<div align='center'>Le flux RSS de $site a bien été supprimé</div>");
+            if(isset($_SESSION['site'])){
+                if(filter_var($_SESSION['site'],FILTER_SANITIZE_STRING) == $site){
+                    unset($_SESSION['site']);
+                }
+            }
+            return ('<div align="center">Le flux RSS de '.$site.' a bien été supprimé<p><a href='.htmlspecialchars($_SERVER['HTTP_REFERER']).'>Cliquez ici pour revenir à la page précédente.</a> 
+            <br /><br /><a href="index.php">Cliquez ici pour revenir à la page d accueil.</a></p></div>');
         }
 
         public function findByCountry($pays, $start, $limit){

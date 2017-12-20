@@ -32,14 +32,14 @@
         </li>
     </ul>
     <?php
-    if(isset($site)){
-        echo("<h4 class='looking'>Vous regardez les news de ".$site."</h4>");
+    if(isset($_SESSION['site'])){
+        echo("<h4 class='looking'>Vous regardez les news de ".($_SESSION['site'])."</h4>");
     }
 
     ?>
 </nav>
 <?php
-if(isset($site)) {
+if(isset($_SESSION['site'])) {
     try {
         $string = NULL;
         foreach ($parserResults->channel as $channel) {

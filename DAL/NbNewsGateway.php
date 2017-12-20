@@ -22,7 +22,8 @@ class NbNewsGateway
     {
         $query = ('UPDATE NbNews SET nbNews = :nbNews WHERE id = 1;');
         $this->con->executeQuery($query, array(":nbNews" => array ($nbNews, PDO::PARAM_INT)));
-        return "<div>Le nombre de news à afficher a bien été mis à jour !</div>";
+        return '<div>Le nombre de news à afficher a bien été mis à jour !<p><a href="'.htmlspecialchars($_SERVER['HTTP_REFERER']).'">Cliquez ici pour revenir à la page précédente.</a> 
+            <br /><br /><a href="index.php">Cliquez ici pour revenir à la page d accueil.</a></p></div>';
 
     }
 

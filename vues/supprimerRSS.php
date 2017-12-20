@@ -23,11 +23,11 @@ if (isset($dVue))
     ?>
 
     <form method="post" name="formSupprRSS" action="index.php?route=validationSupprimerRSS">
-        <table> <tr>
+        <table class="form-group"> <tr>
                 <?php
                 if(count($tRSS) >= 1){
                     foreach ($tRSS as $RSS){
-                        print("<td><input name='txtsite' value='{$RSS->getSite()}' type='submit'></td>");
+                        print("<td><input name='txtsite' class='form-control' value='{$RSS->getSite()}' type='submit'></td>");
                     }
                 }
                 else{

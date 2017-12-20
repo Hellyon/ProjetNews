@@ -16,6 +16,7 @@ class CtrlUser {
 
 
     function Reinit($con) {
+        $site = NULL;
         $gtwNb = new NbNewsGateway($con);
         $nbNews = $gtwNb->selectNbNews();
         if(isset($_GET['site'])){
@@ -24,16 +25,20 @@ class CtrlUser {
                 $site = NULL;
             }
         }
+        if($site != NULL){
+            $_SESSION['site'] = $site;
+        }
         global $rep,$vues; // nécessaire pour utiliser variables globales
         $gtw = new NewsGateway($con);
         $results = $gtw->selectAll();
-        if(isset($_GET['site'])) {
-            $result = $gtw->selectFeed($site);
+        if(isset($_SESSION['site'])) {
+            $result = $gtw->selectFeed($_SESSION['site']);
             $parser = new XmlParser();
             if ($result == NULL)
                 $site = NULL;
-            else
+            else {
                 $parserResults = $parser->parse($result[0]['url']);
+            }
         }
         require($rep.$vues['mainPage']);
     }
