@@ -39,6 +39,13 @@ class Validation
             $site = "";
         }
     }
+    static function val_update(Int $nbNews){
+        $dVueErreur = array();
+        if ($nbNews != filter_var($nbNews, FILTER_SANITIZE_INT)) {
+            $dVueErreur[] = "tentative d'injection de code (attaque sécurité)";
+            $nbNews = "";
+        }
+    }
 
     static function val_ajout(string &$url, string &$site){
         $dVueErreur = array();
