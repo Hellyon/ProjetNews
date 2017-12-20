@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-    <h3><?php
+    <h3 class="connected"><?php
         if(isset($_SESSION['pseudo_admin'])) print("Bienvenue " . $_SESSION['pseudo_admin'] . " !");
         ?></h3>
     <ul class="navbar-nav">
@@ -32,7 +32,7 @@
     </ul>
     <?php
     if(isset($site)){
-        echo("<p class=\"navbar-brand\">Vous regardez les news de ".$site."</p>");
+        echo("<h4 class='looking'>Vous regardez les news de ".$site."</h4>");
     }
 
     ?>
