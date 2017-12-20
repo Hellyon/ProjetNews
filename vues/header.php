@@ -15,5 +15,4 @@
         <h1><a class='title' href="index.php">Les News du Friday</a></h1>
         <p>The best news you can have on a friday!</p>
     </div>
-
 </header>

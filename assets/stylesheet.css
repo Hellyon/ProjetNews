@@ -16,3 +16,11 @@
 .title:active{
     color: black;
 }
+.connected{
+    color: gray;
+    padding-right: 5%;
+}
+.looking{
+    color: gray;
+    padding-left: 5%;
+}
